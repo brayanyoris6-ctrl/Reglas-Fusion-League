@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reglamento Oficial - Fusion League</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-primary: #060913;
+            --bg-secondary: #0d1322;
+            --bg-card: rgba(13, 19, 34, 0.75);
+            --accent-green: #10b981;
+            --accent-green-glow: rgba(16, 185, 129, 0.35);
+            --accent-blue: #3b82f6;
+            --accent-blue-glow: rgba(59, 130, 246, 0.35);
+            --text-title: #f8fafc;
+            --text-body: #cbd5e1;
+            --text-muted: #64748b;
+            --border-color: rgba(59, 130, 246, 0.2);
+            --danger: #ef4444;
+            --danger-glow: rgba(239, 68, 68, 0.25);
+            --card-glow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        [data-theme="neon-green"] {
+            --accent-blue: #06b6d4;
+            --accent-blue-glow: rgba(6, 182, 212, 0.35);
+        }
+
+        [data-theme="crimson"] {
+            --bg-primary: #0a0407;
+            --bg-secondary: #180910;
+            --accent-green: #f43f5e;
+            --accent-green-glow: rgba(244, 63, 94, 0.35);
+            --accent-blue: #fb7185;
+            --accent-blue-glow: rgba(251, 113, 133, 0.35);
+            --border-color: rgba(244, 63, 94, 0.25);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 10%, var(--accent-green-glow) 0%, transparent 45%),
+                radial-gradient(circle at 90% 90%, var(--accent-blue-glow) 0%, transparent 45%);
+            background-attachment: fixed;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .nav-bar {
+            position: sticky;
+            top: 15px;
+            z-index: 1000;
+            background: rgba(13, 19, 34, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 12px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-title);
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo i {
+            color: var(--accent-green);
+            text-shadow: 0 0 12px var(--accent-green-glow);
+        }
+
+        .theme-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 6px 12px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .theme-btn {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .theme-btn:hover { transform: scale(1.2); }
+        .theme-btn.active { border-color: #ffffff; box-shadow: 0 0 8px #ffffff; }
+
+        .btn-default { background: linear-gradient(135deg, #10b981, #3b82f6); }
+        .btn-cyan { background: linear-gradient(135deg, #10b981, #06b6d4); }
+        .btn-crimson { background: linear-gradient(135deg, #f43f5e, #fb7185); }
+
+        .hero-banner {
+            text-align: center;
+            padding: 30px 20px 20px 20px;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--text-title);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px var(--accent-blue-glow);
+        }
+
+        .hero-subtitle {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .warning-banner {
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid var(--danger);
+            box-shadow: 0 0 20px var(--danger-glow);
+            border-radius: 12px;
+            padding: 12px 20px;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            text-align: center;
+            font-weight: 700;
+            color: #fca5a5;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .search-box {
+            margin: 0 auto 35px auto;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            color: var(--text-title);
+            font-size: 1rem;
+            outline: none;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--card-glow);
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 20px var(--accent-green-glow);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-title);
+            margin: 40px 0 25px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .section-title i { color: var(--accent-green); }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 24px;
+            backdrop-filter: blur(12px);
+            box-shadow: var(--card-glow);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(59, 130, 246, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .card-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-title);
+            letter-spacing: 0.5px;
+        }
+
+        .rule-subgroup {
+            margin-bottom: 15px;
+        }
+
+        .rule-subgroup-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .rule-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .rule-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 8px;
+            font-size: 0.92rem;
+        }
+
+        .rule-list li::before {
+            content: "•";
+            color: var(--accent-blue);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .footer-card {
+            margin-top: 60px;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            box-shadow: 0 10px 40px var(--accent-blue-glow);
+        }
+
+        .author-info h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--text-title);
+            font-size: 1.2rem;
+        }
+
+        .author-info p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.1rem; }
+            .nav-bar { flex-direction: column; gap: 15px; border-radius: 20px; }
+            .footer-card { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- NAVEGACIÓN -->
+        <nav class="nav-bar">
+            <div class="nav-logo">
+                <i class="fa-solid fa-futbol"></i>
+                <span>FUSION LEAGUE</span>
+            </div>
+            
+            <div class="theme-selector">
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600; margin-right: 5px;">ESTILO:</span>
+                <div class="theme-btn btn-default active" onclick="setTheme('default')" title="Fusion Neon"></div>
+                <div class="theme-btn btn-cyan" onclick="setTheme('neon-green')" title="Emerald Cyber"></div>
+                <div class="theme-btn btn-crimson" onclick="setTheme('crimson')" title="Crimson Red"></div>
+            </div>
+        </nav>
+
+        <!-- HERO HEADER -->
+        <header class="hero-banner">
+            <h1 class="hero-title">FUSION LEAGUE</h1>
+            <p class="hero-subtitle">Reglamento Oficial e Integrado</p>
+        </header>
+
+        <!-- BANNER DE SANCION GLOBAL -->
+        <div class="warning-banner">
+            🚨 TODO LO QUE NO SE CUMPLA SERÁ SANCIÓN DE -1 GOL EN OFICIALES Y AMISTOSOS.
+        </div>
+
+        <!-- BUSCADOR -->
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" onkeyup="filterRules()" placeholder="Buscar regla, estilo, personaje o sanción...">
+        </div>
+
+        <!-- SECCIÓN 1: REGLAS GENERALES -->
+        <div class="section-title">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Reglas Generales</span>
+        </div>
+
+        <div class="grid-cards">
+            <!-- Goaltending -->
+            <div class="card rule-item">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fa-solid fa-hand-paper"></i></div>
+                    <div class="card-title">🧤 Regla de Goaltending (GT)</div>
+                </div>
+
+                <div class="rule-subgroup">
+                    <div class="rule-subgroup-title">👥 1. Jugadores</div>
+                    <ul class="rule-list">
+                        <li>Solo podrán entrar <strong>2 jugadores como máximo</strong> al área propia.</li>
+                        <li>Uno de ellos deberá ser <strong>obligatoriamente el CM</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="rule-subgroup">
+                    <div class="rule-subgroup-title">🟩 2. Área Chica</div>
+                    <ul class="rule-list">
+                        <li><strong>Únicamente el CM</strong> podrá entrar al área chica.</li>
+                    </ul>
+                </div>
+
+                <div class="rule-subgroup">
+                    <div class="rule-subgroup-title">🦘 3. Saltos</div>
+                    <ul class="rule-list">
+                        <li>El CM podrá realizar un máximo de <strong>2 saltos dentro del área chica</strong>.</li>
+                        <li>Si realiza un <strong>tercer salto</strong>, se considerará GT.</li>
+                    </ul>
+                </div>
+
+                <div class="rule-subgroup">
+                    <div class="rule-subgroup-title">📹 4. Evidencia</div>
+                    <ul class="rule-list">
+                        <li>Toda reclamación de GT deberá contar con <strong>clip de la jugada completa</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Default -->
+            <div class="card rule-item">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fa-solid fa-clock"></i></div>
+                    <div class="card-title">⚠️ Regla de Default (DF)</div>
+                </div>
+
+                <div class="rule-subgroup">
+                    <div class="rule-subgroup-title">📢 1. DT / Sub-DT No Responde</div>
+                    <ul class="rule-list">
+                        <li>Si el DT o Sub-DT no responde al ping, se deberá esperar <strong>25 minutos</strong> desde la hora oficial del partido para reclamar DF.</li>
+                    </ul>
+                </div>
+
+                <div class="rule-subgroup">
+                    <div class="rule-subgroup-title">💬 2. DT / Sub-DT Responde</div>
+                    <ul class="rule-list">
+                        <li>Si el DT o Sub-DT responde pero no se une al partido, se deberá esperar <strong>35 minutos</strong> desde la hora oficial.</li>
+                    </ul>
+                </div>
+
+                <div class="rule-subgroup">
+                    <div class="rule-subgroup-title">🚨 3. Reclamación y Evidencia</div>
+                    <ul class="rule-list">
+                        <li>Cumplido el tiempo correspondiente, se podrá solicitar el DF.</li>
+                        <li><strong>Evidencia Obligatoria:</strong> Presentar capturas de los pings y del tiempo de espera transcurrido.</li>
+                        <li>❌ Prohibido reclamar DF antes de cumplir el tiempo establecido.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Time Waste & Shotstack -->
+            <div class="card rule-item">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fa-solid fa-ban"></i></div>
+                    <div class="card-title">⏳ Time Waste & 💥 Shotstack</div>
+                </div>
+
+                <div class="rule-subgroup">
+                    <div class="rule-subgroup-title">⏳ Regla de Time Waste</div>
+                    <ul class="rule-list">
+                        <li><strong>Prohibición:</strong> Queda prohibido realizar Time Waste intencionadamente para consumir tiempo.</li>
+                        <li><strong>Posesión:</strong> No se podrá mantener el balón sin intención de avanzar o realizar una jugada solo para hacer pasar el tiempo.</li>
+                        <li><strong>Evidencia:</strong> Clip de la jugada completa obligatorio.</li>
+                    </ul>
+                </div>
+
+                <div class="rule-subgroup">
+                    <div class="rule-subgroup-title">💥 Regla de Shotstack</div>
+                    <ul class="rule-list">
+                        <li><strong>Prohibición:</strong> Prohibido realizar Shotstack mediante combinaciones de habilidades o mecánicas para ejecutar disparos no permitidos.</li>
+                        <li><strong>Combinaciones:</strong> No se podrán usar mecánicas que permitan saltarse las restricciones normales de un disparo.</li>
+                        <li><strong>Evidencia:</strong> Demostrar con clip de la jugada completa.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2: REGLAMENTO DE ESTILOS -->
+        <div class="section-title">
+            <i class="fa-solid fa-person-running"></i>
+            <span>Reglamento de Estilos 🟢・RAROS</span>
+        </div>
+
+        <div class="grid-cards">
+            <!-- Isagi / NEL Isagi -->
+            <div class="card rule-item">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fa-solid fa-user-ninja"></i></div>
+                    <div class="card-title">ISAGI / NEL ISAGI</div>
+                </div>
+                <div class="rule-subgroup-title">⚙️ HABILIDADES</div>
+                <ul class="rule-list">
+                    <li><strong>Stun Style:</strong> Solo permitido con Blindspot.</li>
+                    <li><strong>Fake Shoot:</strong> ❌ Prohibido.</li>
+                    <li><strong>Direct Shot:</strong> ❌ Prohibido dentro del área del GK rival.</li>
+                    <li><strong>Blindspot:</strong> ❌ No puede utilizarse sobre el GK.</li>
+                    <li><strong>Blindspot:</strong> Máximo 3 usos por tiempo.</li>
+                    <li><strong>Steal Dash:</strong> Máximo 3 usos por tiempo.</li>
+                </ul>
+            </div>
+
+            <!-- Gagamaru -->
+            <div class="card rule-item">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fa-solid fa-shield"></i></div>
+                    <div class="card-title">GAGAMARU</div>
+                </div>
+                <div class="rule-subgroup-title">⚙️ HABILIDADES</div>
+                <ul class="rule-list">
+                    <li><strong>Godspeed + Fast Reaction:</strong> ❌ No pueden utilizarse simultáneamente.</li>
+                    <li><strong>Awakening:</strong> ❌ Prohibido si hay un rival dentro de tu área.</li>
+                    <li><strong>Scorpion Kick:</strong> ❌ No puede utilizarse mediante M1.</li>
+                    <li><strong>Super Reflexes:</strong> Solo permitido para pases.</li>
+                </ul>
+            </div>
+
+            <!-- Chigiri / NEL Chigiri -->
+            <div class="card rule-item">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="card-title">CHIGIRI / NEL CHIGIRI</div>
+                </div>
+                <div class="rule-subgroup-title">⚙️ HABILIDADES</div>
+                <ul class="rule-list">
+                    <li><strong>Godspeed:</strong> ❌ Prohibido.</li>
+                    <li><strong>Speed Increase + Power Technique:</strong> ❌ Prohibido para tiros dentro del área rival.</li>
+                    <li><strong>Dashes:</strong> ❌ No permitidos dentro del área rival, excepto detrás del punto de penalti.</li>
+                    <li><strong>Red Panther Sniper:</strong> Debe ejecutarse al menos a 1 línea del área del GK.</li>
+                    <li><strong>High-Speed C + Power Flow:</strong> ❌ Prohibido.</li>
+                    <li><strong>Mini Dash:</strong> Comparte la restricción del punto de penalti.</li>
+                </ul>
+            </div>
+
+            <!-- Kurona -->
+            <div class="card rule-item">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fa-solid fa-fish"></i></div>
+                    <div class="card-title">KURONA</div>
+                </div>
+                <div class="rule-subgroup-title">⚙️ HABILIDADES</div>
+                <ul class="rule-list">
+                    <li><strong>Pases:</strong> ❌ No pueden dirigirse al área del GK rival.</li>
+                    <li><strong>One-Two:</strong> Ninguno de los dos jugadores puede estar dentro del área rival.</li>
+                    <li><strong>Shark Steal V:</strong> Solo permitido en campo propio.</li>
+                    <li><strong>Tras One-Two:</strong> Esperar 3 segundos antes de realizar Skill Shot.</li>
+                    <li><strong>Shark Steal:</strong> Máximo 2 robos efectivos por tiempo.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer-card">
+            <div class="author-info">
+                <h3>Fusion League - Sistema Oficial</h3>
+                <p>Configurado para GitHub Pages & Servidores Oficiales</p>
+            </div>
+            <div class="contact-links">
+                <span style="color: var(--accent-green); font-weight: 700;"><i class="fa-brands fa-discord"></i> FUSION LEAGUE 2026</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- SCRIPT DE INTERACTIVIDAD -->
+    <script>
+        function setTheme(themeName) {
+            if (themeName === 'default') {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', themeName);
+            }
+            document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function filterRules() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.rule-item');
+
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                if (text.includes(input)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
