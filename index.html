@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reglamento Oficial - Fusion League</title>
+    <title>Reglamento Oficial & Balance de Estilos - Fusion League</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,7 @@
         :root {
             --bg-primary: #060913;
             --bg-secondary: #0d1322;
-            --bg-card: rgba(13, 19, 34, 0.75);
+            --bg-card: rgba(13, 19, 34, 0.85);
             --accent-green: #10b981;
             --accent-green-glow: rgba(16, 185, 129, 0.35);
             --accent-blue: #3b82f6;
@@ -27,6 +27,14 @@
             --danger: #ef4444;
             --danger-glow: rgba(239, 68, 68, 0.25);
             --card-glow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+            /* Rarity colors */
+            --rare-color: #3b82f6;
+            --epic-color: #a855f7;
+            --legendary-color: #eab308;
+            --mythic-color: #ef4444;
+            --worldclass-color: #06b6d4;
+            --master-color: #f43f5e;
         }
 
         [data-theme="neon-green"] {
@@ -65,7 +73,7 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -74,7 +82,7 @@
             position: sticky;
             top: 15px;
             z-index: 1000;
-            background: rgba(13, 19, 34, 0.85);
+            background: rgba(13, 19, 34, 0.9);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-color);
@@ -83,7 +91,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
 
@@ -128,9 +136,60 @@
         .btn-cyan { background: linear-gradient(135deg, #10b981, #06b6d4); }
         .btn-crimson { background: linear-gradient(135deg, #f43f5e, #fb7185); }
 
+        .tabs-menu {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-body);
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--accent-green);
+            color: var(--text-title);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(59, 130, 246, 0.2));
+            border-color: var(--accent-green);
+            color: var(--text-title);
+            box-shadow: 0 0 20px var(--accent-green-glow);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .hero-banner {
             text-align: center;
-            padding: 30px 20px 20px 20px;
+            padding: 10px 20px 20px 20px;
         }
 
         .hero-title {
@@ -146,7 +205,7 @@
 
         .hero-subtitle {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--accent-green);
             text-transform: uppercase;
@@ -160,7 +219,7 @@
             box-shadow: 0 0 20px var(--danger-glow);
             border-radius: 12px;
             padding: 12px 20px;
-            max-width: 700px;
+            max-width: 850px;
             margin: 0 auto 30px auto;
             text-align: center;
             font-weight: 700;
@@ -204,50 +263,49 @@
 
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--text-title);
-            margin: 40px 0 25px 0;
+            margin: 25px 0 20px 0;
             display: flex;
             align-items: center;
             gap: 12px;
             border-bottom: 2px solid var(--border-color);
-            padding-bottom: 12px;
+            padding-bottom: 10px;
         }
-
-        .section-title i { color: var(--accent-green); }
 
         .grid-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 22px;
+            gap: 20px;
         }
 
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 18px;
-            padding: 24px;
+            padding: 22px;
             backdrop-filter: blur(12px);
             box-shadow: var(--card-glow);
+            position: relative;
         }
 
         .card-header {
             display: flex;
             align-items: center;
             gap: 14px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .card-icon {
-            width: 44px;
-            height: 44px;
+            width: 42px;
+            height: 42px;
             background: rgba(59, 130, 246, 0.15);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--accent-blue);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             border: 1px solid var(--border-color);
         }
 
@@ -259,20 +317,35 @@
             letter-spacing: 0.5px;
         }
 
+        .rarity-badge {
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-top: 2px;
+        }
+
+        .badge-rare { background: rgba(59, 130, 246, 0.2); color: var(--rare-color); border: 1px solid var(--rare-color); }
+        .badge-epic { background: rgba(168, 85, 247, 0.2); color: var(--epic-color); border: 1px solid var(--epic-color); }
+        .badge-legendary { background: rgba(234, 179, 8, 0.2); color: var(--legendary-color); border: 1px solid var(--legendary-color); }
+        .badge-mythic { background: rgba(239, 68, 68, 0.2); color: var(--mythic-color); border: 1px solid var(--mythic-color); }
+        .badge-worldclass { background: rgba(6, 182, 212, 0.2); color: var(--worldclass-color); border: 1px solid var(--worldclass-color); }
+        .badge-master { background: rgba(244, 63, 94, 0.2); color: var(--master-color); border: 1px solid var(--master-color); }
+
         .rule-subgroup {
-            margin-bottom: 15px;
+            margin-bottom: 14px;
         }
 
         .rule-subgroup-title {
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--accent-green);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         .rule-list {
@@ -283,22 +356,22 @@
         .rule-list li {
             position: relative;
             padding-left: 18px;
-            margin-bottom: 8px;
-            font-size: 0.92rem;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
         }
 
         .rule-list li::before {
             content: "•";
             color: var(--accent-blue);
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             position: absolute;
             left: 0;
             top: -2px;
         }
 
         .footer-card {
-            margin-top: 60px;
+            margin-top: 50px;
             background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
             border: 1px solid var(--border-color);
             border-radius: 20px;
@@ -308,23 +381,23 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 20px;
-            box-shadow: 0 10px 40px var(--accent-blue-glow);
         }
 
         .author-info h3 {
             font-family: 'Orbitron', sans-serif;
             color: var(--text-title);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .author-info p {
             color: var(--text-muted);
-            font-size: 0.88rem;
+            font-size: 0.85rem;
         }
 
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.1rem; }
+            .hero-title { font-size: 2rem; }
             .nav-bar { flex-direction: column; gap: 15px; border-radius: 20px; }
+            .tabs-menu { flex-direction: column; }
             .footer-card { flex-direction: column; text-align: center; }
         }
     </style>
@@ -333,7 +406,7 @@
 
     <div class="container">
         
-        <!-- NAVEGACIÓN -->
+        <!-- BARRA DE NAVEGACIÓN -->
         <nav class="nav-bar">
             <div class="nav-logo">
                 <i class="fa-solid fa-futbol"></i>
@@ -341,220 +414,536 @@
             </div>
             
             <div class="theme-selector">
-                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600; margin-right: 5px;">ESTILO:</span>
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600; margin-right: 5px;">TEMA:</span>
                 <div class="theme-btn btn-default active" onclick="setTheme('default')" title="Fusion Neon"></div>
                 <div class="theme-btn btn-cyan" onclick="setTheme('neon-green')" title="Emerald Cyber"></div>
                 <div class="theme-btn btn-crimson" onclick="setTheme('crimson')" title="Crimson Red"></div>
             </div>
         </nav>
 
-        <!-- HERO HEADER -->
+        <!-- BANNER HEADER -->
         <header class="hero-banner">
             <h1 class="hero-title">FUSION LEAGUE</h1>
-            <p class="hero-subtitle">Reglamento Oficial e Integrado</p>
+            <p class="hero-subtitle">Portal Oficial & BALANCE TOTAL DE ESTILOS</p>
         </header>
 
-        <!-- BANNER DE SANCION GLOBAL -->
+        <!-- SANCIÓN GLOBAL -->
         <div class="warning-banner">
-            🚨 TODO LO QUE NO SE CUMPLA SERÁ SANCIÓN DE -1 GOL EN OFICIALES Y AMISTOSOS.
+            🚨 SANCIÓN GLOBAL: CUALQUIER USO DE MECÁNICAS PROHIBIDAS RESULTARÁ EN -1 GOL EN EL OFICIAL O AMISTOSO.
+        </div>
+
+        <!-- PESTAÑAS -->
+        <div class="tabs-menu">
+            <button class="tab-btn active" onclick="switchTab('generales')">
+                <i class="fa-solid fa-shield-halved"></i> Reglas Generales
+            </button>
+            <button class="tab-btn" onclick="switchTab('partidos')">
+                <i class="fa-solid fa-gamepad"></i> Reglas Partidos
+            </button>
+            <button class="tab-btn" onclick="switchTab('rare-epic')">
+                <i class="fa-solid fa-bolt"></i> Estilos Rare & Epic
+            </button>
+            <button class="tab-btn" onclick="switchTab('legendary')">
+                <i class="fa-solid fa-crown"></i> Estilos Legendary
+            </button>
+            <button class="tab-btn" onclick="switchTab('mythic-wc')">
+                <i class="fa-solid fa-dragon"></i> Mythic, World Class & Master
+            </button>
         </div>
 
         <!-- BUSCADOR -->
         <div class="search-box">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="searchInput" onkeyup="filterRules()" placeholder="Buscar regla, estilo, personaje o sanción...">
+            <input type="text" id="searchInput" onkeyup="filterRules()" placeholder="Buscar personaje (ej: Rin, Kaiser, Lorenzo)...">
         </div>
 
-        <!-- SECCIÓN 1: REGLAS GENERALES -->
-        <div class="section-title">
-            <i class="fa-solid fa-shield-halved"></i>
-            <span>Reglas Generales</span>
+        <!-- PÁGINA 1: REGLAS GENERALES -->
+        <div id="tab-generales" class="tab-content active">
+            <div class="section-title">
+                <i class="fa-solid fa-shield-halved" style="color: var(--accent-green);"></i>
+                <span>Reglas Generales de Juego</span>
+            </div>
+
+            <div class="grid-cards">
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-hand-paper"></i></div>
+                        <div class="card-title">🧤 Goaltending (GT)</div>
+                    </div>
+                    <div class="rule-subgroup">
+                        <div class="rule-subgroup-title">👥 1. Jugadores en Área</div>
+                        <ul class="rule-list">
+                            <li>Máximo <strong>2 jugadores</strong> en área propia. Uno debe ser obligatoriamente el CM.</li>
+                        </ul>
+                    </div>
+                    <div class="rule-subgroup">
+                        <div class="rule-subgroup-title">🟩 2. Área Chica & Saltos</div>
+                        <ul class="rule-list">
+                            <li><strong>Únicamente el CM</strong> puede entrar al área chica.</li>
+                            <li>El CM solo puede hacer máximo <strong>2 saltos dentro del área chica</strong> (3er salto = GT).</li>
+                        </ul>
+                    </div>
+                    <div class="rule-subgroup">
+                        <div class="rule-subgroup-title">📹 3. Evidencia</div>
+                        <ul class="rule-list">
+                            <li>Reclamos requieren clip de la jugada completa.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div class="card-title">⚠️ Default (DF)</div>
+                    </div>
+                    <div class="rule-subgroup">
+                        <div class="rule-subgroup-title">📢 Tiempos de Espera</div>
+                        <ul class="rule-list">
+                            <li><strong>Si DT/Sub-DT NO responde:</strong> Esperar 25 minutos.</li>
+                            <li><strong>Si DT/Sub-DT responde pero no entra:</strong> Esperar 35 minutos.</li>
+                            <li>Reclamos antes de cumplir el tiempo exacto serán invalidados.</li>
+                            <li>Obligatorio presentar capturas de pings con hora visible.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-ban"></i></div>
+                        <div class="card-title">⏳ Time Waste & 💥 Shotstack</div>
+                    </div>
+                    <div class="rule-subgroup">
+                        <div class="rule-subgroup-title">🚫 Restricciones</div>
+                        <ul class="rule-list">
+                            <li>Prohibido retener balón sin intención de avanzar o armar jugada (Time Waste).</li>
+                            <li>Prohibido usar combos o bugs para saltarse animaciones/restricciones de disparo (Shotstack).</li>
+                            <li>Toda reclamación exige clip fluido de la jugada completa.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="grid-cards">
-            <!-- Goaltending -->
-            <div class="card rule-item">
-                <div class="card-header">
-                    <div class="card-icon"><i class="fa-solid fa-hand-paper"></i></div>
-                    <div class="card-title">🧤 Regla de Goaltending (GT)</div>
-                </div>
-
-                <div class="rule-subgroup">
-                    <div class="rule-subgroup-title">👥 1. Jugadores</div>
-                    <ul class="rule-list">
-                        <li>Solo podrán entrar <strong>2 jugadores como máximo</strong> al área propia.</li>
-                        <li>Uno de ellos deberá ser <strong>obligatoriamente el CM</strong>.</li>
-                    </ul>
-                </div>
-
-                <div class="rule-subgroup">
-                    <div class="rule-subgroup-title">🟩 2. Área Chica</div>
-                    <ul class="rule-list">
-                        <li><strong>Únicamente el CM</strong> podrá entrar al área chica.</li>
-                    </ul>
-                </div>
-
-                <div class="rule-subgroup">
-                    <div class="rule-subgroup-title">🦘 3. Saltos</div>
-                    <ul class="rule-list">
-                        <li>El CM podrá realizar un máximo de <strong>2 saltos dentro del área chica</strong>.</li>
-                        <li>Si realiza un <strong>tercer salto</strong>, se considerará GT.</li>
-                    </ul>
-                </div>
-
-                <div class="rule-subgroup">
-                    <div class="rule-subgroup-title">📹 4. Evidencia</div>
-                    <ul class="rule-list">
-                        <li>Toda reclamación de GT deberá contar con <strong>clip de la jugada completa</strong>.</li>
-                    </ul>
-                </div>
+        <!-- PÁGINA 2: REGLAS DE PARTIDOS -->
+        <div id="tab-partidos" class="tab-content">
+            <div class="section-title">
+                <i class="fa-solid fa-gamepad" style="color: var(--accent-green);"></i>
+                <span>Reglas de Partidos</span>
             </div>
 
-            <!-- Default -->
-            <div class="card rule-item">
-                <div class="card-header">
-                    <div class="card-icon"><i class="fa-solid fa-clock"></i></div>
-                    <div class="card-title">⚠️ Regla de Default (DF)</div>
-                </div>
-
-                <div class="rule-subgroup">
-                    <div class="rule-subgroup-title">📢 1. DT / Sub-DT No Responde</div>
+            <div class="grid-cards">
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-server"></i></div>
+                        <div class="card-title">🌐 Servidores & Host</div>
+                    </div>
                     <ul class="rule-list">
-                        <li>Si el DT o Sub-DT no responde al ping, se deberá esperar <strong>25 minutos</strong> desde la hora oficial del partido para reclamar DF.</li>
+                        <li><strong>Host Neutro:</strong> Servidor acordado por ambos DTs antes de iniciar.</li>
+                        <li><strong>Re-host:</strong> Máximo 1 re-host por equipo antes del minuto 5 por ping >200ms comprobable.</li>
                     </ul>
                 </div>
 
-                <div class="rule-subgroup">
-                    <div class="rule-subgroup-title">💬 2. DT / Sub-DT Responde</div>
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-user-plus"></i></div>
+                        <div class="card-title">🔄 Cambios & Desconexiones</div>
+                    </div>
                     <ul class="rule-list">
-                        <li>Si el DT o Sub-DT responde pero no se une al partido, se deberá esperar <strong>35 minutos</strong> desde la hora oficial.</li>
-                    </ul>
-                </div>
-
-                <div class="rule-subgroup">
-                    <div class="rule-subgroup-title">🚨 3. Reclamación y Evidencia</div>
-                    <ul class="rule-list">
-                        <li>Cumplido el tiempo correspondiente, se podrá solicitar el DF.</li>
-                        <li><strong>Evidencia Obligatoria:</strong> Presentar capturas de los pings y del tiempo de espera transcurrido.</li>
-                        <li>❌ Prohibido reclamar DF antes de cumplir el tiempo establecido.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Time Waste & Shotstack -->
-            <div class="card rule-item">
-                <div class="card-header">
-                    <div class="card-icon"><i class="fa-solid fa-ban"></i></div>
-                    <div class="card-title">⏳ Time Waste & 💥 Shotstack</div>
-                </div>
-
-                <div class="rule-subgroup">
-                    <div class="rule-subgroup-title">⏳ Regla de Time Waste</div>
-                    <ul class="rule-list">
-                        <li><strong>Prohibición:</strong> Queda prohibido realizar Time Waste intencionadamente para consumir tiempo.</li>
-                        <li><strong>Posesión:</strong> No se podrá mantener el balón sin intención de avanzar o realizar una jugada solo para hacer pasar el tiempo.</li>
-                        <li><strong>Evidencia:</strong> Clip de la jugada completa obligatorio.</li>
-                    </ul>
-                </div>
-
-                <div class="rule-subgroup">
-                    <div class="rule-subgroup-title">💥 Regla de Shotstack</div>
-                    <ul class="rule-list">
-                        <li><strong>Prohibición:</strong> Prohibido realizar Shotstack mediante combinaciones de habilidades o mecánicas para ejecutar disparos no permitidos.</li>
-                        <li><strong>Combinaciones:</strong> No se podrán usar mecánicas que permitan saltarse las restricciones normales de un disparo.</li>
-                        <li><strong>Evidencia:</strong> Demostrar con clip de la jugada completa.</li>
+                        <li><strong>Desconexión:</strong> Pausa al salir el balón. 5 minutos para reconectar al jugador.</li>
+                        <li><strong>Sustituciones:</strong> Máximo 3 cambios por partido en pausas reglamentarias.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- SECCIÓN 2: REGLAMENTO DE ESTILOS -->
-        <div class="section-title">
-            <i class="fa-solid fa-person-running"></i>
-            <span>Reglamento de Estilos 🟢・RAROS</span>
+        <!-- PÁGINA 3: RARE & EPIC STYLES -->
+        <div id="tab-rare-epic" class="tab-content">
+            <div class="section-title">
+                <i class="fa-solid fa-bolt" style="color: var(--epic-color);"></i>
+                <span>Estilos Raros (Rare) y Épicos (Epic)</span>
+            </div>
+
+            <div class="grid-cards">
+                <!-- ISAGI -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-futbol"></i></div>
+                        <div>
+                            <div class="card-title">ISAGI</div>
+                            <span class="rarity-badge badge-rare">Rare</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Direct Shot:</strong> Prohibido disparar dentro del área chica del GK.</li>
+                        <li><strong>Spatial Awareness:</strong> Máximo 2 usos por tiempo.</li>
+                        <li><strong>Off-the-Ball:</strong> No se puede usar para traspasar la posición del GK en disparos directos.</li>
+                    </ul>
+                </div>
+
+                <!-- CHIGIRI -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                        <div>
+                            <div class="card-title">CHIGIRI</div>
+                            <span class="rarity-badge badge-rare">Rare</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Top Speed / Sprint:</strong> Prohibido combinar Dash + Shot dentro del área rival.</li>
+                        <li><strong>Breakaway Dash:</strong> Prohibido usar para entrar directo al área chica con el balón.</li>
+                    </ul>
+                </div>
+
+                <!-- GAGAMARU -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-hands-mitten"></i></div>
+                        <div>
+                            <div class="card-title">GAGAMARU</div>
+                            <span class="rarity-badge badge-rare">Rare</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Spring Header:</strong> No se puede usar para anotar goles (uso defensivo / pase únicamente).</li>
+                        <li><strong>Super Reflexes:</strong> Permitido solo dentro del área chica.</li>
+                    </ul>
+                </div>
+
+                <!-- RAICHI -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-dumbbell"></i></div>
+                        <div>
+                            <div class="card-title">RAICHI</div>
+                            <span class="rarity-badge badge-rare">Rare</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Sexy Football (Marking):</strong> Prohibido usar stuns de agarre de manera consecutiva al mismo rival.</li>
+                        <li><strong>Charge Tackle:</strong> Máximo 3 robos efectivos por tiempo.</li>
+                    </ul>
+                </div>
+
+                <!-- IGAGURI -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-face-laugh-beam"></i></div>
+                        <div>
+                            <div class="card-title">IGAGURI</div>
+                            <span class="rarity-badge badge-rare">Rare</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Malicia (Foul Bait):</strong> Prohibido invocar falta dentro del área penal rival.</li>
+                    </ul>
+                </div>
+
+                <!-- KURONA -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-arrows-spin"></i></div>
+                        <div>
+                            <div class="card-title">KURONA</div>
+                            <span class="rarity-badge badge-epic">Epic</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>One-Two:</strong> Prohibido iniciar o recibir la pared dentro del área rival.</li>
+                        <li><strong>Shark Turn:</strong> Esperar 2 segundos antes de disparar al arco tras la vuelta.</li>
+                    </ul>
+                </div>
+
+                <!-- OTOYA -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-user-ninja"></i></div>
+                        <div>
+                            <div class="card-title">OTOYA</div>
+                            <span class="rarity-badge badge-epic">Epic</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Ninja Steal:</strong> Prohibido robar al GK mientras este tiene la animación de saque.</li>
+                        <li><strong>Off-the-Ball Stealth:</strong> Máximo 2 usos por tiempo dentro del último tercio.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <div class="grid-cards">
-            <!-- Isagi / NEL Isagi -->
-            <div class="card rule-item">
-                <div class="card-header">
-                    <div class="card-icon"><i class="fa-solid fa-user-ninja"></i></div>
-                    <div class="card-title">ISAGI / NEL ISAGI</div>
-                </div>
-                <div class="rule-subgroup-title">⚙️ HABILIDADES</div>
-                <ul class="rule-list">
-                    <li><strong>Stun Style:</strong> Solo permitido con Blindspot.</li>
-                    <li><strong>Fake Shoot:</strong> ❌ Prohibido.</li>
-                    <li><strong>Direct Shot:</strong> ❌ Prohibido dentro del área del GK rival.</li>
-                    <li><strong>Blindspot:</strong> ❌ No puede utilizarse sobre el GK.</li>
-                    <li><strong>Blindspot:</strong> Máximo 3 usos por tiempo.</li>
-                    <li><strong>Steal Dash:</strong> Máximo 3 usos por tiempo.</li>
-                </ul>
+        <!-- PÁGINA 4: LEGENDARY STYLES -->
+        <div id="tab-legendary" class="tab-content">
+            <div class="section-title">
+                <i class="fa-solid fa-crown" style="color: var(--legendary-color);"></i>
+                <span>Estilos Legendarios (Legendary)</span>
             </div>
 
-            <!-- Gagamaru -->
-            <div class="card rule-item">
-                <div class="card-header">
-                    <div class="card-icon"><i class="fa-solid fa-shield"></i></div>
-                    <div class="card-title">GAGAMARU</div>
+            <div class="grid-cards">
+                <!-- NAGI -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-feather"></i></div>
+                        <div>
+                            <div class="card-title">NAGI</div>
+                            <span class="rarity-badge badge-legendary">Legendary</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Black Hole Trap:</strong> Prohibido atropar pases aéreos directamente dentro del área chica del GK.</li>
+                        <li><strong>Fake Volley:</strong> Máximo 1 feint tiro por ataque. Prohibido amagar al GK dentro de su área.</li>
+                    </ul>
                 </div>
-                <div class="rule-subgroup-title">⚙️ HABILIDADES</div>
-                <ul class="rule-list">
-                    <li><strong>Godspeed + Fast Reaction:</strong> ❌ No pueden utilizarse simultáneamente.</li>
-                    <li><strong>Awakening:</strong> ❌ Prohibido si hay un rival dentro de tu área.</li>
-                    <li><strong>Scorpion Kick:</strong> ❌ No puede utilizarse mediante M1.</li>
-                    <li><strong>Super Reflexes:</strong> Solo permitido para pases.</li>
-                </ul>
+
+                <!-- KING (BAROU) -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-chess-king"></i></div>
+                        <div>
+                            <div class="card-title">KING (BAROU)</div>
+                            <span class="rarity-badge badge-legendary">Legendary</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Chop Dribble:</strong> Máximo 2 recortadas consecutivas antes de ejecutar pase o tiro.</li>
+                        <li><strong>Villain Chop Shot:</strong> Prohibido disparar de ángulo imposible a menos de 3 metros de la línea de gol.</li>
+                    </ul>
+                </div>
+
+                <!-- KARASU -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-crow"></i></div>
+                        <div>
+                            <div class="card-title">KARASU</div>
+                            <span class="rarity-badge badge-legendary">Legendary</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Analytical Arm:</strong> Prohibido usar la habilidad para bloquear la visión o movimiento del GK rival.</li>
+                        <li><strong>Target Mark:</strong> Solo se puede marcar a 1 jugador por posesión.</li>
+                    </ul>
+                </div>
+
+                <!-- HIORI -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-compass"></i></div>
+                        <div>
+                            <div class="card-title">HIORI</div>
+                            <span class="rarity-badge badge-legendary">Legendary</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Curved Pass / Threaded Pass:</strong> Pases curvos prohibidos con dirección directa al arco sin intervención de un compañero.</li>
+                        <li><strong>Vision Dribble:</strong> Máximo 2 usos por tiempo.</li>
+                    </ul>
+                </div>
+
+                <!-- AIKU -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-shield-cat"></i></div>
+                        <div>
+                            <div class="card-title">AIKU</div>
+                            <span class="rarity-badge badge-legendary">Legendary</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Total Defense:</strong> Debe respetar la regla de GT (No puede ser un 3er jugador en área chica).</li>
+                        <li><strong>Snake Slide / Cobra:</strong> Prohibido barrer de frente al GK en posesión.</li>
+                    </ul>
+                </div>
+
+                <!-- KIYORA -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-scale-unbalanced"></i></div>
+                        <div>
+                            <div class="card-title">KIYORA</div>
+                            <span class="rarity-badge badge-legendary">Legendary</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Breakdance Dribble:</strong> Prohibido enlazar el dribble directamente con Skill Shot instantáneo.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 5: MYTHIC, WORLD CLASS & MASTER STYLES -->
+        <div id="tab-mythic-wc" class="tab-content">
+            <div class="section-title">
+                <i class="fa-solid fa-dragon" style="color: var(--mythic-color);"></i>
+                <span>Estilos Mythic, World Class & Master</span>
             </div>
 
-            <!-- Chigiri / NEL Chigiri -->
-            <div class="card rule-item">
-                <div class="card-header">
-                    <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
-                    <div class="card-title">CHIGIRI / NEL CHIGIRI</div>
+            <div class="grid-cards">
+                <!-- RIN / NEL RIN -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
+                        <div>
+                            <div class="card-title">RIN / NEL RIN</div>
+                            <span class="rarity-badge badge-worldclass">World Class</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Puppet Control:</strong> Prohibido forzar desmarques que provoquen bug de colisión con el GK.</li>
+                        <li><strong>Trivela Curve Shot:</strong> Máximo 1 tiro de curva lejana por tiempo.</li>
+                        <li><strong>Destroyer Mode:</strong> Prohibido usar el impulso para empujar al CM/GK dentro de su propio arco.</li>
+                    </ul>
                 </div>
-                <div class="rule-subgroup-title">⚙️ HABILIDADES</div>
-                <ul class="rule-list">
-                    <li><strong>Godspeed:</strong> ❌ Prohibido.</li>
-                    <li><strong>Speed Increase + Power Technique:</strong> ❌ Prohibido para tiros dentro del área rival.</li>
-                    <li><strong>Dashes:</strong> ❌ No permitidos dentro del área rival, excepto detrás del punto de penalti.</li>
-                    <li><strong>Red Panther Sniper:</strong> Debe ejecutarse al menos a 1 línea del área del GK.</li>
-                    <li><strong>High-Speed C + Power Flow:</strong> ❌ Prohibido.</li>
-                    <li><strong>Mini Dash:</strong> Comparte la restricción del punto de penalti.</li>
-                </ul>
-            </div>
 
-            <!-- Kurona -->
-            <div class="card rule-item">
-                <div class="card-header">
-                    <div class="card-icon"><i class="fa-solid fa-fish"></i></div>
-                    <div class="card-title">KURONA</div>
+                <!-- SAE -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <div>
+                            <div class="card-title">SAE ITOSHI</div>
+                            <span class="rarity-badge badge-worldclass">World Class</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Perfect Line Pass:</strong> Prohibido hacer pases bombeados directos a la línea de gol que desorienten al GK.</li>
+                        <li><strong>Counter Dribble:</strong> Máximo 2 usos por mitad de campo.</li>
+                    </ul>
                 </div>
-                <div class="rule-subgroup-title">⚙️ HABILIDADES</div>
-                <ul class="rule-list">
-                    <li><strong>Pases:</strong> ❌ No pueden dirigirse al área del GK rival.</li>
-                    <li><strong>One-Two:</strong> Ninguno de los dos jugadores puede estar dentro del área rival.</li>
-                    <li><strong>Shark Steal V:</strong> Solo permitido en campo propio.</li>
-                    <li><strong>Tras One-Two:</strong> Esperar 3 segundos antes de realizar Skill Shot.</li>
-                    <li><strong>Shark Steal:</strong> Máximo 2 robos efectivos por tiempo.</li>
-                </ul>
+
+                <!-- KAISER -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-crosshair"></i></div>
+                        <div>
+                            <div class="card-title">KAISER</div>
+                            <span class="rarity-badge badge-worldclass">World Class</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Kaiser Impact:</strong> ❌ Prohibido disparar desde antes de la mitad de la cancha.</li>
+                        <li><strong>Kaiser Impact:</strong> Debe ejecutarse a mínimo 2 metros fuera del área chica.</li>
+                        <li><strong>Predator Eye:</strong> No acumulable con Flows de velocidad instantánea.</li>
+                    </ul>
+                </div>
+
+                <!-- DON LORENZO -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-skull"></i></div>
+                        <div>
+                            <div class="card-title">DON LORENZO</div>
+                            <span class="rarity-badge badge-worldclass">World Class</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Zombie Dribble:</strong> Prohibido usar el stun de cuerpo a cuerpo dentro del área chica rival.</li>
+                        <li><strong>Golden Defense:</strong> Máximo 2 intercepciones en aire por tiempo.</li>
+                    </ul>
+                </div>
+
+                <!-- SHIDOU / DEMON SHIDOU -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-fire"></i></div>
+                        <div>
+                            <div class="card-title">SHIDOU / DEMON</div>
+                            <span class="rarity-badge badge-mythic">Mythic</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Dragon Drive:</strong> Prohibido rematar de chilena por encima del GK si este ya tiene la posición ganada.</li>
+                        <li><strong>Penalty Zone Overhead:</strong> Máximo 2 intentos de remate aéreo por tiempo.</li>
+                    </ul>
+                </div>
+
+                <!-- KUNIGAMI / WILD CARD -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                        <div>
+                            <div class="card-title">KUNIGAMI</div>
+                            <span class="rarity-badge badge-mythic">Mythic</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Knuckle Shot:</strong> Prohibido disparar con Knuckle a menos de 5 metros del arco (demasiado impredecible).</li>
+                        <li><strong>Hero Power Charge:</strong> No se puede usar para empujar defensores durante el saque de centro.</li>
+                    </ul>
+                </div>
+
+                <!-- YUKIMIYA -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-glasses"></i></div>
+                        <div>
+                            <div class="card-title">YUKIMIYA</div>
+                            <span class="rarity-badge badge-mythic">Mythic</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Gyro Shot:</strong> Debe ejecutarse fuera del área penal.</li>
+                        <li><strong>Street Dribble:</strong> Prohibido encadenar más de 3 regates continuos sin soltar el balón.</li>
+                    </ul>
+                </div>
+
+                <!-- CHARLES -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-gears"></i></div>
+                        <div>
+                            <div class="card-title">CHARLES</div>
+                            <span class="rarity-badge badge-mythic">Mythic</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Contra-Pase Inverso:</strong> Prohibido direccionar pases asistidos automáticamente al arco rival.</li>
+                    </ul>
+                </div>
+
+                <!-- LOKI -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-stopwatch-20"></i></div>
+                        <div>
+                            <div class="card-title">JULIAN LOKI</div>
+                            <span class="rarity-badge badge-master">Master Class</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Godspeed Sprint:</strong> ❌ Totalmente prohibido correr de arco a arco sin realizar pases.</li>
+                        <li><strong>Godspeed Steal:</strong> Máximo 1 uso defensivo por tiempo.</li>
+                    </ul>
+                </div>
+
+                <!-- LAVINHO -->
+                <div class="card rule-item">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fa-solid fa-otter"></i></div>
+                        <div>
+                            <div class="card-title">LAVINHO</div>
+                            <span class="rarity-badge badge-master">Master Class</span>
+                        </div>
+                    </div>
+                    <ul class="rule-list">
+                        <li><strong>Gingá Dribble:</strong> Prohibido retener el balón haciendo amagues en tu propia área chica para hacer Time Waste.</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
         <!-- FOOTER -->
         <footer class="footer-card">
             <div class="author-info">
-                <h3>Fusion League - Sistema Oficial</h3>
-                <p>Configurado para GitHub Pages & Servidores Oficiales</p>
+                <h3>FUSION LEAGUE — 2026</h3>
+                <p>Reglamento Oficial, Integrado y Balanceado • Blue Lock Rivals</p>
             </div>
-            <div class="contact-links">
-                <span style="color: var(--accent-green); font-weight: 700;"><i class="fa-brands fa-discord"></i> FUSION LEAGUE 2026</span>
+            <div>
+                <span style="color: var(--accent-green); font-weight: 700;"><i class="fa-brands fa-discord"></i> DISCORD OFICIAL</span>
             </div>
         </footer>
 
     </div>
 
-    <!-- SCRIPT DE INTERACTIVIDAD -->
+    <!-- SCRIPT INTERACTIVO -->
     <script>
         function setTheme(themeName) {
             if (themeName === 'default') {
@@ -566,9 +955,21 @@
             event.target.classList.add('active');
         }
 
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById('tab-' + tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+
+            document.getElementById('searchInput').value = '';
+            filterRules();
+        }
+
         function filterRules() {
             const input = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.querySelectorAll('.rule-item');
+            const activeTab = document.querySelector('.tab-content.active');
+            const cards = activeTab.querySelectorAll('.rule-item');
 
             cards.forEach(card => {
                 const text = card.innerText.toLowerCase();
